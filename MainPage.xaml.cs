@@ -14,12 +14,16 @@
             count++;
 
             if (count == 1)
-                CounterBtn.Text = $"Clicked {count} time";
+                CounterBtn.Text = $"You clicked {count} time!";
             else
-                CounterBtn.Text = $"Clicked {count} times";
+                CounterBtn.Text = $"You clicked {count} times!";
+
+            if (count == 3)
+            {
+                DisplayAlert("Great job!", "Ai ajuns la 3 clicuri :D", "OK");
+            }
 
             SemanticScreenReader.Announce(CounterBtn.Text);
         }
     }
-
 }
