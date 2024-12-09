@@ -5,14 +5,18 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:Grosu_Olesea_Lab7"
     Shell.FlyoutBehavior="Disabled"
-    Title="Grosu_Olesea_Lab7">
+    Shell.BackgroundColor="#4a2ac4" 
+    Shell.ForegroundColor="White"
+    Shell.TitleColor="White"
+    Shell.TabBarBackgroundColor="White"
+    Shell.TabBarTitleColor="#4a2ac4"
+    Shell.TabBarUnselectedColor="Gray">
 
     <TabBar>
         <ShellContent
             Title="Shopping Lists"
             ContentTemplate="{DataTemplate local:MainPage}"
             Route="MainPage" />
-
         <ShellContent
             Title="About"
             ContentTemplate="{DataTemplate local:AboutPage}"
