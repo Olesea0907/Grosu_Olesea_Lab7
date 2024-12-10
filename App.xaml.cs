@@ -6,7 +6,7 @@ namespace Grosu_Olesea_Lab7
 {
     public partial class App : Application
     {
-        private static ShoppingListDatabase database;
+        private static ShoppingListDatabase database = null!;
 
         public static ShoppingListDatabase Database
         {

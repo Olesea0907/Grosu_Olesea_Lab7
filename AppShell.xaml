@@ -14,12 +14,12 @@
 
     <TabBar>
         <ShellContent
-            Title="Shopping Lists"
+            Title="Welcome"
             ContentTemplate="{DataTemplate local:MainPage}"
             Route="MainPage" />
 
         <ShellContent
-            Title="About"
+            Title="About app"
             ContentTemplate="{DataTemplate local:AboutPage}"
             Route="AboutPage" />
 
