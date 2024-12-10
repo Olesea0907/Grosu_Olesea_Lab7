@@ -5,7 +5,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:Grosu_Olesea_Lab7"
     Shell.FlyoutBehavior="Disabled"
-    Shell.BackgroundColor="#4a2ac4" 
+    Shell.BackgroundColor="#4a2ac4"
     Shell.ForegroundColor="White"
     Shell.TitleColor="White"
     Shell.TabBarBackgroundColor="White"
@@ -17,9 +17,15 @@
             Title="Shopping Lists"
             ContentTemplate="{DataTemplate local:MainPage}"
             Route="MainPage" />
+
         <ShellContent
             Title="About"
             ContentTemplate="{DataTemplate local:AboutPage}"
             Route="AboutPage" />
+
+        <ShellContent
+            Title="My Shopping Lists"
+            ContentTemplate="{DataTemplate local:ListEntryPage}"
+            Route="ListEntryPage" />
     </TabBar>
 </Shell>
