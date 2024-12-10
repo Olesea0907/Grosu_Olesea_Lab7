@@ -1,14 +1,13 @@
 ﻿<?xml version = "1.0" encoding = "UTF-8" ?>
 <Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:Grosu_Olesea_Lab7"
              x:Class="Grosu_Olesea_Lab7.App">
     <Application.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
-                <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
+        <Style TargetType="Shell">
+            <Setter Property="FlyoutBehavior" Value="Disabled" />
+            <Setter Property="BackgroundColor" Value="#4a2ac4" />
+            <Setter Property="ForegroundColor" Value="White" />
+            <Setter Property="TitleColor" Value="White" />
+        </Style>
     </Application.Resources>
 </Application>
