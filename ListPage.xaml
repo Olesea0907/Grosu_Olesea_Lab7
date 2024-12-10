@@ -4,23 +4,33 @@
              x:Class="Grosu_Olesea_Lab7.ListPage"
              Title="List Page">
     <StackLayout Margin="20">
+        <!-- Editor pentru descrierea listei de cumpărături -->
         <Editor Placeholder="Enter the description of the shopping list"
                 Text="{Binding Description}"
-                HeightRequest="100" />
+                HeightRequest="50" />
 
+        <!-- Grilă pentru butoanele Save și Delete -->
         <Grid Margin="10,20,10,0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
+            <!-- Buton Save -->
             <Button Text="Save"
                     Clicked="OnSaveButtonClicked"
                     Grid.Column="0" />
 
+            <!-- Buton Delete -->
             <Button Text="Delete"
                     Clicked="OnDeleteButtonClicked"
                     Grid.Column="1" />
         </Grid>
+
+        <!-- Buton pentru navigarea către ProductPage -->
+        <Button Text="Add/Choose Item to buy"
+                Margin="0,20,0,0"
+                MaximumWidthRequest="300"
+                Clicked="OnChooseButtonClicked" />
     </StackLayout>
 </ContentPage>
