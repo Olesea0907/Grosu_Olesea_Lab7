@@ -4,33 +4,41 @@
              x:Class="Grosu_Olesea_Lab7.ListPage"
              Title="List Page">
     <StackLayout Margin="20">
-        <!-- Editor pentru descrierea listei de cumpărături -->
         <Editor Placeholder="Enter the description of the shopping list"
                 Text="{Binding Description}"
-                HeightRequest="50" />
+                HeightRequest="50"
+                x:Name="descriptionEditor" />
 
-        <!-- Grilă pentru butoanele Save și Delete -->
         <Grid Margin="10,20,10,0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
-            <!-- Buton Save -->
             <Button Text="Save"
                     Clicked="OnSaveButtonClicked"
                     Grid.Column="0" />
-
-            <!-- Buton Delete -->
-            <Button Text="Delete"
+            <Button Text="Delete List"
                     Clicked="OnDeleteButtonClicked"
                     Grid.Column="1" />
         </Grid>
 
-        <!-- Buton pentru navigarea către ProductPage -->
-        <Button Text="Add/Choose Item to buy"
-                Margin="0,20,0,0"
-                MaximumWidthRequest="300"
-                Clicked="OnChooseButtonClicked" />
+        <ListView x:Name="listView"
+          Margin="20"
+          ItemTapped="OnItemTapped">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Text="{Binding Description}" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+
+        <StackLayout Margin="0,20,0,0" Spacing="10">
+            <Button Text="Add/Choose Item to Buy"
+                    Clicked="OnChooseButtonClicked" />
+            <Button Text="Delete Item"
+                    Clicked="OnDeleteItemClicked" />
+        </StackLayout>
     </StackLayout>
 </ContentPage>

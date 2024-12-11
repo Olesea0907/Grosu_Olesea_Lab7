@@ -14,11 +14,9 @@ namespace Grosu_Olesea_Lab7.Models
         [PrimaryKey, AutoIncrement]
         public int ID { get; set; }
 
-        // Relația cu ShopList
         [ForeignKey(typeof(ShopList))]
         public int ShopListID { get; set; }
 
-        // Relația cu Product
         [ForeignKey(typeof(Product))]
         public int ProductID { get; set; }
     }
