@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SQLite;
+﻿using SQLite; 
+using SQLiteNetExtensions.Attributes; 
+using System;
 
 namespace Grosu_Olesea_Lab7.Models
 {
@@ -16,5 +13,11 @@ namespace Grosu_Olesea_Lab7.Models
         public string Description { get; set; }
 
         public DateTime Date { get; set; }
+
+        [ForeignKey(typeof(Shop))]
+        public int ShopID { get; set; }
+
+        [ManyToOne]
+        public Shop Shop { get; set; }
     }
 }

@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Grosu_Olesea_Lab7.ListPage"
              Title="List Page">
+
     <StackLayout Margin="20">
         <Editor Placeholder="Enter the description of the shopping list"
                 Text="{Binding Description}"
@@ -14,7 +15,6 @@
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-
             <Button Text="Save"
                     Clicked="OnSaveButtonClicked"
                     Grid.Column="0" />
@@ -24,15 +24,14 @@
         </Grid>
 
         <ListView x:Name="listView"
-          Margin="20"
-          ItemTapped="OnItemTapped">
+                  Margin="20"
+                  ItemTapped="OnItemTapped">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <TextCell Text="{Binding Description}" />
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-
 
         <StackLayout Margin="0,20,0,0" Spacing="10">
             <Button Text="Add/Choose Item to Buy"

@@ -13,19 +13,28 @@
     Shell.TabBarUnselectedColor="Gray">
 
     <TabBar>
+        <!-- Pagina principală -->
         <ShellContent
             Title="Welcome"
             ContentTemplate="{DataTemplate local:MainPage}"
             Route="MainPage" />
 
+        <!-- Pagina de despre aplicație -->
         <ShellContent
             Title="About app"
             ContentTemplate="{DataTemplate local:AboutPage}"
             Route="AboutPage" />
 
+        <!-- Lista de cumpărături -->
         <ShellContent
             Title="My Shopping Lists"
             ContentTemplate="{DataTemplate local:ListEntryPage}"
             Route="ListEntryPage" />
+
+        <!-- Pagina pentru Magazine -->
+        <ShellContent
+            Title="My Shops"
+            ContentTemplate="{DataTemplate local:ShopEntryPage}"
+            Route="ShopEntryPage" />
     </TabBar>
 </Shell>
