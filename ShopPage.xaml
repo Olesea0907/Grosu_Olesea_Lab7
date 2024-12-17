@@ -2,16 +2,16 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Grosu_Olesea_Lab7.ShopPage"
-             Title="ShopPage">
+             Title="Shop Page">
     <ContentPage.Content>
         <StackLayout Margin="20">
-            <!-- Editor pentru introducerea numelui magazinului -->
+            <!-- Editor pentru numele magazinului -->
             <Editor Placeholder="Enter shop name" 
                     Margin="20"
                     Text="{Binding ShopName}" 
                     HeightRequest="50" />
 
-            <!-- Editor pentru introducerea adresei magazinului -->
+            <!-- Editor pentru adresa magazinului -->
             <Editor Placeholder="Enter shop address" 
                     Margin="20"
                     Text="{Binding Adress}" 
@@ -27,18 +27,23 @@
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
 
-                <!-- Buton pentru salvarea magazinului -->
+                <!-- Buton pentru salvare -->
                 <Button Text="Save Shop" 
                         Grid.Column="0"
-                        MaximumWidthRequest="200"
                         Clicked="OnSaveButtonClicked" />
 
-                <!-- Buton pentru afișarea pe hartă -->
+                <!-- Buton pentru afișare pe hartă -->
                 <Button Text="Show on Map" 
                         Grid.Column="1"
-                        MaximumWidthRequest="200"
                         Clicked="OnShowMapButtonClicked" />
             </Grid>
+
+            <!-- Buton pentru ștergere magazin -->
+            <Button Text="Delete Shop"
+                    BackgroundColor="Red"
+                    TextColor="White"
+                    Margin="0,20,0,0"
+                    Clicked="OnDeleteButtonClicked" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

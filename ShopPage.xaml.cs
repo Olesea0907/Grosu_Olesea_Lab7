@@ -11,6 +11,7 @@ public partial class ShopPage : ContentPage
         InitializeComponent();
     }
 
+    // Salvează magazinul
     private async void OnSaveButtonClicked(object sender, EventArgs e)
     {
         var shop = (Shop)BindingContext;
@@ -25,6 +26,7 @@ public partial class ShopPage : ContentPage
         await Navigation.PopAsync();
     }
 
+    // Afișează locația magazinului pe hartă
     private async void OnShowMapButtonClicked(object sender, EventArgs e)
     {
         try
@@ -57,6 +59,26 @@ public partial class ShopPage : ContentPage
         catch (Exception ex)
         {
             await DisplayAlert("Error", $"An error occurred: {ex.Message}", "OK");
+        }
+    }
+
+    // Șterge magazinul curent
+    private async void OnDeleteButtonClicked(object sender, EventArgs e)
+    {
+        var shop = (Shop)BindingContext;
+
+        if (shop == null || shop.ID == 0)
+        {
+            await DisplayAlert("Error", "No shop to delete.", "OK");
+            return;
+        }
+
+        bool confirm = await DisplayAlert("Delete", "Are you sure you want to delete this shop?", "Yes", "No");
+        if (confirm)
+        {
+            await App.Database.DeleteShopAsync(shop);
+            await DisplayAlert("Success", "Shop deleted successfully.", "OK");
+            await Navigation.PopAsync();
         }
     }
 }
