@@ -9,26 +9,39 @@ public partial class ListPage : ContentPage
         InitializeComponent();
     }
 
+    /// Se apelează automat la afișarea paginii.
+    /// Încarcă magazinele disponibile și adresele acestora.
     protected override async void OnAppearing()
     {
         base.OnAppearing();
 
+        var items = await App.Database.GetShopsAsync();
+        ShopPicker.ItemsSource = items; // Asignăm lista magazinelor Picker-ului.
+        ShopPicker.ItemDisplayBinding = new Binding("ShopDetails");
+
         var shopList = (ShopList)BindingContext;
-
-        System.Diagnostics.Debug.WriteLine($"ShopList ID: {shopList.ID}, Description: {shopList.Description}");
-
         listView.ItemsSource = await App.Database.GetListProductsAsync(shopList.ID);
     }
 
+    /// Salvează modificările aduse listei de cumpărături, inclusiv magazinul ales.
     private async void OnSaveButtonClicked(object sender, EventArgs e)
     {
         var slist = (ShopList)BindingContext;
+
         slist.Date = DateTime.UtcNow;
         slist.Description = descriptionEditor.Text;
+
+        // Salvează ID-ul magazinului selectat
+        if (ShopPicker.SelectedItem is Shop selectedShop)
+        {
+            slist.ShopID = selectedShop.ID;
+        }
+
         await App.Database.SaveShopListAsync(slist);
         await Navigation.PopAsync();
     }
 
+    /// Șterge lista de cumpărături curentă.
     private async void OnDeleteButtonClicked(object sender, EventArgs e)
     {
         var slist = (ShopList)BindingContext;
@@ -36,6 +49,7 @@ public partial class ListPage : ContentPage
         await Navigation.PopAsync();
     }
 
+    /// Deschide pagina pentru alegerea unui produs.
     private async void OnChooseButtonClicked(object sender, EventArgs e)
     {
         await Navigation.PushAsync(new ProductPage((ShopList)this.BindingContext)
@@ -44,6 +58,7 @@ public partial class ListPage : ContentPage
         });
     }
 
+    /// Șterge un produs selectat din lista de cumpărături.
     private async void OnDeleteItemClicked(object sender, EventArgs e)
     {
         var shopList = (ShopList)BindingContext;
@@ -71,7 +86,7 @@ public partial class ListPage : ContentPage
         }
     }
 
-    // EventHandler pentru ItemTapped
+    /// Adaugă produsul selectat în Editor.
     private void OnItemTapped(object sender, ItemTappedEventArgs e)
     {
         if (e.Item is Product selectedProduct)

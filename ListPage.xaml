@@ -10,6 +10,11 @@
                 HeightRequest="50"
                 x:Name="descriptionEditor" />
 
+        <Picker x:Name="ShopPicker" 
+        Title="Select Shop Name"
+        ItemsSource="{Binding ShopNames}"
+        SelectedItem="{Binding SelectedShop}" />
+
         <Grid Margin="10,20,10,0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
