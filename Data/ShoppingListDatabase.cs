@@ -19,7 +19,24 @@ namespace Grosu_Olesea_Lab7.Data
         }
 
         // ShopList
-        public Task<List<ShopList>> GetShopListsAsync() => _database.Table<ShopList>().ToListAsync();
+        public async Task<List<ShopList>> GetShopListsAsync()
+        {
+            // Obține lista de cumpărături
+            var shopLists = await _database.Table<ShopList>().ToListAsync();
+
+            // Încarcă magazinul asociat pentru fiecare listă
+            foreach (var list in shopLists)
+            {
+                if (list.ShopID != 0)
+                {
+                    list.Shop = await _database.Table<Shop>()
+                                               .Where(s => s.ID == list.ShopID)
+                                               .FirstOrDefaultAsync();
+                }
+            }
+
+            return shopLists;
+        }
         public Task<int> SaveShopListAsync(ShopList shopList) => shopList.ID != 0 ? _database.UpdateAsync(shopList) : _database.InsertAsync(shopList);
         public Task<int> DeleteShopListAsync(ShopList shopList) => _database.DeleteAsync(shopList);
 

@@ -14,8 +14,14 @@ namespace Grosu_Olesea_Lab7
         protected override async void OnAppearing()
         {
             base.OnAppearing();
-            listView.ItemsSource = await App.Database.GetShopListsAsync();
+            var shopLists = await App.Database.GetShopListsAsync();
+            foreach (var sl in shopLists)
+            {
+                System.Diagnostics.Debug.WriteLine($"ShopList ID: {sl.ID}, Description: {sl.Description}, ShopID: {sl.ShopID}");
+            }
+            listView.ItemsSource = shopLists;
         }
+
 
         private async void OnShopListAddedClicked(object sender, EventArgs e)
         {

@@ -1,7 +1,8 @@
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Grosu_Olesea_Lab7.ListEntryPage"
              Title="Shopping Lists">
+
     <ContentPage.ToolbarItems>
         <!-- Butonul pentru Add Shopping List -->
         <ToolbarItem Text="Add Shopping List"
@@ -16,7 +17,7 @@
         <ListView.ItemTemplate>
             <DataTemplate>
                 <TextCell Text="{Binding Description}"
-                          Detail="{Binding Date}" />
+                          Detail="{Binding Shop.ShopName, StringFormat='Shop: {0}'}" />
             </DataTemplate>
         </ListView.ItemTemplate>
     </ListView>

@@ -16,12 +16,19 @@ public partial class ListPage : ContentPage
         base.OnAppearing();
 
         var items = await App.Database.GetShopsAsync();
-        ShopPicker.ItemsSource = items; // Asignăm lista magazinelor Picker-ului.
+        ShopPicker.ItemsSource = items;
         ShopPicker.ItemDisplayBinding = new Binding("ShopDetails");
 
         var shopList = (ShopList)BindingContext;
+
+        if (shopList.ShopID != 0)
+        {
+            ShopPicker.SelectedItem = items.FirstOrDefault(s => s.ID == shopList.ShopID);
+        }
+
         listView.ItemsSource = await App.Database.GetListProductsAsync(shopList.ID);
     }
+
 
     /// Salvează modificările aduse listei de cumpărături, inclusiv magazinul ales.
     private async void OnSaveButtonClicked(object sender, EventArgs e)
@@ -35,11 +42,13 @@ public partial class ListPage : ContentPage
         if (ShopPicker.SelectedItem is Shop selectedShop)
         {
             slist.ShopID = selectedShop.ID;
+            slist.Shop = selectedShop; // Asigură-te că magazinul este setat
         }
 
         await App.Database.SaveShopListAsync(slist);
         await Navigation.PopAsync();
     }
+
 
     /// Șterge lista de cumpărături curentă.
     private async void OnDeleteButtonClicked(object sender, EventArgs e)

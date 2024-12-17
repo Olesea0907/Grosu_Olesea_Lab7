@@ -19,5 +19,16 @@ namespace Grosu_Olesea_Lab7.Models
 
         [ManyToOne]
         public Shop Shop { get; set; }
+
+        public string DisplayDetails
+        {
+            get
+            {
+                return string.IsNullOrWhiteSpace(Shop?.ShopName)
+                    ? $"{Description}"
+                    : $"{Description} - Shop: {Shop.ShopName}";
+            }
+        }
+
     }
 }
